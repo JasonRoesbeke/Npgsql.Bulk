@@ -115,9 +115,11 @@ namespace Npgsql.Bulk
 				case "geography":
 					return NpgsqlDbType.Geography;
                 default:
-
-                    if (info.ColumnTypeExtra.Equals("array", StringComparison.OrdinalIgnoreCase))
-                        return NpgsqlDbType.Array;
+					if (info.ColumnTypeExtra != null)
+					{
+						if (info.ColumnTypeExtra.Equals("array", StringComparison.OrdinalIgnoreCase))
+							return NpgsqlDbType.Array;
+					}
 
                     throw new NotImplementedException($"Column type '{info.ColumnType}' is not supported");
             }
