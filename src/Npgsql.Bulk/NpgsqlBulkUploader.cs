@@ -110,6 +110,10 @@ namespace Npgsql.Bulk
                 case "tstzrange":
                 case "daterange":
                     return NpgsqlDbType.Range;
+				case "geometry":
+					return NpgsqlDbType.Geometry;
+				case "geography":
+					return NpgsqlDbType.Geography;
                 default:
 
                     if (info.ColumnTypeExtra.Equals("array", StringComparison.OrdinalIgnoreCase))
